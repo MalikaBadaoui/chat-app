@@ -1,41 +1,29 @@
 import React from 'react';
 import './Contact.css';
-
-const name = "April Garza"
-const image = 'https://randomuser.me/api/portraits/women/56.jpg'
+import PropTypes from 'prop-types';
 
 
-
-function log (online){
-    if (online) {
-        return "onLine"
-    } else {
-        return "offLine"
-    }
-}; 
-
-
-const on = log(true);
-// const off = log(false)  //<!-- <div className = "status-offline"> {off} </div> -->
-
-function Contact () {
+function Contact(props){
     return (
+        
+        <section className="Contact">
+            <img className="avatar" src = {props.avatar} alt ="avatar"></img>
+            <div>    
+                <h4 className="name"> {props.name} </h4>
+                <div className="status">
+                    
+                    <div className= {props.online ? 'status-online' : 'status-offline'} ></div>
+                    <p className="status-text"> {props.online ? 'online' : 'offline'} </p>
+                </div>
+            </div>        
+        </section>
+    )
+};
 
-            <section className="Contact" >
-                <img className="avatar" src={image} alt="avatar" />
-                    <div>
-                        <h4 className="name"> {name} </h4>
-                            <div className="status"> 
-                                <div className="status-online">  
-                                </div>
-                                <p className="status-text"> {on} </p>
-                                
-                            </div>
-                            
-                    </div>
+Contact.propTypes = {
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    online: PropTypes.bool
+  };
 
-            </section>
-
-        )
-    };
 export default Contact;
