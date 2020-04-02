@@ -1,24 +1,22 @@
-import React from 'react';
-import './Contact.css';
+import React from 'react'
+import './Contact.css'
 import PropTypes from 'prop-types';
 
 
-function Contact(props){
+export default function Contact({name, avatar, online}) {
     return (
-        
-        <section className="Contact">
-            <img className="avatar" src = {props.avatar} alt ="avatar"></img>
-            <div>    
-                <h4 className="name"> {props.name} </h4>
-                <div className="status">
-                    
-                    <div className= {props.online ? 'status-online' : 'status-offline'} ></div>
-                    <p className="status-text"> {props.online ? 'online' : 'offline'} </p>
+        <div className="contact" >
+            <img className="avatar" src={avatar} alt={name} />
+            <div>
+                <p className="name">{name}</p>
+                <div className="status" >
+                    <div className={online ? 'status-online' : 'status-offline'} />
+                    <p className="status-text">{online ? 'online' : 'offline' }</p>
                 </div>
-            </div>        
-        </section>
+            </div>
+        </div>
     )
-};
+}
 
 Contact.propTypes = {
     name: PropTypes.string.isRequired,
@@ -26,4 +24,3 @@ Contact.propTypes = {
     online: PropTypes.bool
   };
 
-export default Contact;
